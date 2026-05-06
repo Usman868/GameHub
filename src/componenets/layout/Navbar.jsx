@@ -82,7 +82,7 @@ export default function Navbar() {
 
               <button
                 className="px-4 py-2 rounded-lg bg-gradient-to-r from-vault-blue to-vault-purple text-white text-sm font-semibold tracking-wide
-                             hover:opacity-90 active:scale-95 transition-all"
+                hover:opacity-90 active:scale-95 transition-all"
               >
                 Sign In
               </button>

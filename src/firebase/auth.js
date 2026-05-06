@@ -9,7 +9,7 @@ import {
     updateProfile,
 } from "firebase/auth";
 import { doc, setDoc, getDoc, serverTimestamp } from "firebase/firestore";
-import { db, auth } from "./config"
+import { db, auth } from "./config";
 
 const provider = new GoogleAuthProvider();
 
@@ -52,3 +52,9 @@ const Logout = async () => {
     await signOut(auth);
 }
 
+const onAuthChange = (callback) => {
+    return onAuthStateChanged(auth, callback)
+}
+
+
+export { registerWithEmail, loginWithEmail, loginWithGoogle, Logout, onAuthChange };

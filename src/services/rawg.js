@@ -12,6 +12,7 @@ const FetchData = async (url) => {
     return data.json();
 }
 
+// Getting Games data functions object
 const rawg = {
     // Trending /featured games for hero slider and new realease section
     getTrendingGames(count = 6) {
@@ -75,10 +76,6 @@ const rawg = {
     getPlatforms() {
         return FetchData(urlBuilder("/platforms", { odering: "-games_count", page_size: 20 }));
     },
-
-
-
-
 
 }
 

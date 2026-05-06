@@ -1,4 +1,3 @@
-// src/components/common/Button.jsx
 import { Loader2 } from "lucide-react";
 
 const variants = {
@@ -23,7 +22,6 @@ export default function Button({
   loading = false, 
   className = "", 
   icon: Icon, 
-  iconRight, 
   ...props 
 }) {
   return (
@@ -48,8 +46,6 @@ export default function Button({
       ) : null}
       
       {children}
-      
-      {iconRight && !loading && <iconRight size={14} />}
     </button>
   );
 }
