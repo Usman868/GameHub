@@ -21,9 +21,10 @@ const getUserProfile = async (uid) => {
 }
 
 const addGameToWishlist = async (uid, game) => {
-  const ref = doc(db, "users", uid, "wishlist", String(game.id));
+  const gameId = String(game.id);
+  const ref = doc(db, "users", uid, "wishlist", gameId);
   await setDoc(ref, {
-    gameId: game.id,
+    gameId,
     name: game.name,
     background_image: game.background_image || null,
     rating: game.rating || 0,
@@ -37,10 +38,10 @@ const removeGameFromWishlist = async (uid, gameId) => {
   await deleteDoc(doc(db, "users", uid, "wishlist", String(gameId)));
 }
 
-const isGameInWishlist = async (uid, gameId) => {
-  const snapshot = await getDoc(doc(db, "users", uid, "wishlist", String(gameId)));
-  return snapshot.exists();
-}
+// const isGameInWishlist = async (uid, gameId) => {
+//   const snapshot = await getDoc(doc(db, "users", uid, "wishlist", String(gameId)));
+//   return snapshot.exists();
+// }
 
 const subscribeWishlist = (uid, callback) => {
   const ref = collection(db, "users", uid, "wishlist");
@@ -50,4 +51,4 @@ const subscribeWishlist = (uid, callback) => {
     callback(items);
   })
 }
-export { subscribeWishlist, addGameToWishlist, removeGameFromWishlist, isGameInWishlist ,getUserProfile };
+export { subscribeWishlist, addGameToWishlist, removeGameFromWishlist, getUserProfile };
