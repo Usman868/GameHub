@@ -1,6 +1,6 @@
 // src/components/auth/SocialAuth.jsx
 import { useState } from "react";
-import { loginWithGoogle, loginAnonymously } from "../../firebase/auth";
+import { loginWithGoogle } from "../../firebase/auth";
 import toast from "react-hot-toast";
 
 export default function SocialAuth({ onSuccess }) {
@@ -22,18 +22,18 @@ export default function SocialAuth({ onSuccess }) {
     }
   }
 
-  async function handleGuest() {
-    setLoadingGuest(true);
-    try {
-      await loginAnonymously();
-      toast("Signed in as Guest", { icon: "👤" });
-      onSuccess?.();
-    } catch {
-      toast.error("Guest sign-in failed.");
-    } finally {
-      setLoadingGuest(false);
-    }
-  }
+  // async function handleGuest() {
+  //   setLoadingGuest(true);
+  //   try {
+  //     await loginAnonymously();
+  //     toast("Signed in as Guest", { icon: "👤" });
+  //     onSuccess?.();
+  //   } catch {
+  //     toast.error("Guest sign-in failed.");
+  //   } finally {
+  //     setLoadingGuest(false);
+  //   }
+  // }
 
   return (
     <div className="space-y-3">
@@ -60,7 +60,7 @@ export default function SocialAuth({ onSuccess }) {
       </button>
 
       {/* Guest */}
-      <button
+      {/* <button
         onClick={handleGuest}
         disabled={loadingGuest}
         className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg border border-vault-border
@@ -72,7 +72,7 @@ export default function SocialAuth({ onSuccess }) {
           : <span className="text-base">👤</span>
         }
         Continue as Guest
-      </button>
+      </button> */}
     </div>
   );
 }

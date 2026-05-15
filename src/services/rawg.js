@@ -27,8 +27,8 @@ const rawg = {
     },
 
     // Paginated games list with optional filters
-    getGames({ page = 1, pageSize = 20, search, genres, platforms, odering = "-rating", minRating } = {}) {
-        const params = { page, page_size: odering, odering };
+    getGames({ page = 1, pageSize = 20, search, genres, platforms, ordering = "-rating", minRating } = {}) {
+        const params = { page, page_size:pageSize, ordering  };
         if (search) params.search = search;
         if (genres?.length) params.genres = genres.json(",");
         if (platforms) params.platforms = platforms;

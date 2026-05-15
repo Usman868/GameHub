@@ -2,11 +2,11 @@
 import { useState } from "react";
 import { X } from "lucide-react";
 import { useAuth } from "../../context/AuthContext";
-import LoginForm from "./LoginForm";
-import RegisterForm from "./RegisterForm";
+import { loginForm } from "./LoginForm";
+import {RegisterForm} from "./RegisterForm";
 import SocialAuth from "./SocialAuth";
 
-export default function AuthModal() {
+export const AuthModal = () => {
   const { authModalOpen, closeAuthModal } = useAuth();
   const [tab, setTab] = useState("login"); // "login" | "register"
 
@@ -55,7 +55,7 @@ export default function AuthModal() {
             ))}
           </div>
 
-          {tab === "login"    ? <LoginForm    onSuccess={closeAuthModal} /> : null}
+          {tab === "login" ? <LoginForm onSuccess={closeAuthModal} /> : null}
           {tab === "register" ? <RegisterForm onSuccess={closeAuthModal} /> : null}
 
           <div className="relative my-5">
